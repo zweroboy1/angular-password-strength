@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PasswordIndicatorComponent } from '../password-indicator/password-indicator.component';
-import { PasswordService } from '../services/password.service';
+import { PasswordService, PasswordStrength } from '../services/password.service';
 
 
 @Component({
@@ -17,16 +17,17 @@ export class PasswordInputComponent {
   loginForm = new FormGroup({
     password: new FormControl('')
   });
-
-  passwordStrength: any = "";
+  showPassword: boolean = false;
+  passwordStrength: PasswordStrength = PasswordStrength.Empty;
 
   constructor(private passwordService: PasswordService) {
   }
 
   onInputChange() {
-
-    const getPasswordStrength =
-      console.log('Input Value:', this.loginForm.value.password);
     this.passwordStrength = this.passwordService.getPasswordStrength(this.loginForm.value.password);
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
   }
 }
