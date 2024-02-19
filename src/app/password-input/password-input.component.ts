@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PasswordIndicatorComponent } from '../password-indicator/password-indicator.component';
-import { PasswordStrength, PasswordService } from '../services/password.service';
+import { PasswordService } from '../services/password.service';
 
 
 @Component({
